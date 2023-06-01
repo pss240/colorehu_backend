@@ -10,7 +10,7 @@ from .models import Signin
 
 @api_view(['POST'])
 def post(request):
-    if request.method == 'POST':
+    if request.META['CONTENT-TYPE'] == 'application/json':
         serializer = SigninSerializer(data=request.data)
 
         if serializer.is_valid():
