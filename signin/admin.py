@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import signin
+from .models import Signin
 
 
 # Register your models here.
 
-admin.site.register(signin)
+admin.site.register(Signin)
