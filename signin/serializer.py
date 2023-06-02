@@ -4,4 +4,4 @@ from .models import Signin
 class SigninSerializer(serializers.ModelSerializer):
     class Meta:
         model = Signin
-        fields = ('nickname','email',)
+        fields = ('id','nickname','email',)
