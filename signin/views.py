@@ -8,6 +8,13 @@ from signin.serializer import SigninSerializer
 from .models import Signin
 # Create your views here.
 
+@api_view(['GET'])
+def get(request):
+    print("inside of sign in get")
+    user = Signin.objects.all()
+    serialized_user = SigninSerializer(user, many=True)
+    return Response(serialized_user.data,status=200)
+
 @api_view(['POST'])
 def post(request):
     print("inside of sign in")
