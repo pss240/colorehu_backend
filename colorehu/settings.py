@@ -17,23 +17,23 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-secret_file = os.path.join(BASE_DIR,'secrets.json')
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
+# secret_file = os.path.join(BASE_DIR,'secrets.json')
+# with open(secret_file) as f:
+#     secrets = json.loads(f.read())
 
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
+# def get_secret(setting, secrets=secrets):
+#     try:
+#         return secrets[setting]
+#     except KeyError:
+#         error_msg = "Set the {} environment variable".format(setting)
+#         raise ImproperlyConfigured(error_msg)
 
-SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = "django-insecure-v0p1lrx#d+6%fkolk1@6&9p0h)gfh4f@k)_tzrhsj)c5f(ptxh"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*','.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
