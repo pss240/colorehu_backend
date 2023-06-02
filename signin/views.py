@@ -11,7 +11,7 @@ from .models import Signin
 @api_view(['POST'])
 def post(request):
     print("inside of sign in post")
-    if request.META['CONTENT-TYPE'] == 'application/json' or request.method == 'POST':
+    if request.META['CONTENT-TYPE'] == 'application/json':
         serializer = SigninSerializer(data=request.data)
 
         if serializer.is_valid():
