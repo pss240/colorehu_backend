@@ -21,7 +21,6 @@ def colorSetPost(request):
 
     return Response(serializer.errors,status=400)
 
-@api_view(['POST'])
 def findColorSet(request):
     if request.method == 'POST':
         json_data = json.loads(request.body)
@@ -29,6 +28,6 @@ def findColorSet(request):
         colorSetQuery = ColorSet.objects.all().filter(colorsetstr__contains=setstr)
         colorSetJson = serializers.serialize("json",colorSetQuery)
         
-        return Response(colorSetJson.data,status=200)
+        return JsonResponse(colorSetJson,status=200)
         
     
