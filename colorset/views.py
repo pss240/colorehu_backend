@@ -24,7 +24,7 @@ def colorSetPost(request):
 @api_view(['POST'])
 def findColorSet(request):
     if request.method == 'POST':
-        json_data = request.body
+        json_data = json.loads(request.body.decode('utf-8'))
         setstr = json_data['str']
         colorSetQuery = ColorSet.objects.all().filter(colorsetstr__contains=setstr)
         colorSetJson = serializers.serialize("json",colorSetQuery)
