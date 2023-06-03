@@ -4,5 +4,5 @@ from . import views
 app_name = 'colorset'
 urlpatterns = [
     path('',views.colorSetPost,name='colorset'),
-    path('loadSet/<String:str>',views.findColorSet,name='loadset'),
+    path('loadSet/<str:colorstr>',views.findColorSet,name='loadset'),
 ]
