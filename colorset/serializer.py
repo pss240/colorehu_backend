@@ -6,11 +6,13 @@ class ColorSetSerializer(serializers.ModelSerializer):
         model = ColorSet
         fields = (
             'id',
+            'uid',
             'color1',
             'color2',
             'color3',
             'color4',
             'color5',
+            'colorsetstr',
             'share',
             'keyword',
             )

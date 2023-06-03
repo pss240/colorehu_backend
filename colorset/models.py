@@ -12,6 +12,6 @@ class ColorSet(models.Model):
     color3 = models.CharField(max_length=200,blank=True)
     color4 = models.CharField(max_length=200,blank=True)
     color5 = models.CharField(max_length=200,blank=True)
-#    colorsetstr = models.CharField(max_length=200)
+    colorsetstr = models.CharField(max_length=200)
     share = models.BooleanField(default=False)
     keyword = models.CharField(max_length=200)
