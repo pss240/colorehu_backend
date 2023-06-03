@@ -1,15 +1,16 @@
 from rest_framework import serializers
-from .models import Colorsetrecommend
+from .models import ColorSet
 
-class ColorsetrecommendSerializer(serializers.ModelSerializer):
+class ColorSetSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Colorsetrecommend
+        model = ColorSet
         fields = (
+            'id',
             'color1',
             'color2',
             'color3',
             'color4',
             'color5',
+            'share',
             'keyword',
-            
             )

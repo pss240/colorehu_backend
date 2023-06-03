@@ -3,16 +3,15 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-from colorsetrecommend.serializer import ColorsetrecommendSerializer
+from colorset.serializer import ColorSetSerializer
 
 
 
 @api_view(['POST'])
 def post(request):
-    print("inside of colorsetrecommend in")
+    print("inside of colorset in")
     if request.method == 'POST':
-        serializer = ColorsetrecommendSerializer(data=request.data)
+        serializer = ColorSetSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()

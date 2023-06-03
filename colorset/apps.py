@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ColorsetrecommendConfig(AppConfig):
+class ColorSetConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'colorsetrecommend'
+    name = 'colorset'
