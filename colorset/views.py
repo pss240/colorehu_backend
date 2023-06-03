@@ -29,6 +29,6 @@ def findColorSet(request):
         colorSetQuery = ColorSet.objects.all().filter(colorsetstr__contains=setstr)
         colorSetJson = serializers.serialize("json",colorSetQuery)
         
-        return JsonResponse(colorSetJson,status=200)
+        return JsonResponse(colorSetJson,status=200,safe=False)
         
     
