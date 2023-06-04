@@ -26,12 +26,11 @@ def post(request):
         except:
             duplicate = None
             print(serializer)
-            print(serializer.email)
-            print(serializer['email'])
             print(duplicate)
             print(serializer.data['email'])
             print(**serializer.data['email'])
             print(serializer.data.email)
+            print(serializer['email'])
         if duplicate==None:
             if serializer.is_valid():
                 serializer.save()
