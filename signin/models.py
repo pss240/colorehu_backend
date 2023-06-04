@@ -4,5 +4,6 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Signin(models.Model):
-    nickname = models.CharField(max_length=200)
+    id = models.AutoField(primary_key=True)
+    nickname = models.CharField(max_length=200,)
     email = models.CharField(max_length=200)
