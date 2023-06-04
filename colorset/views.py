@@ -34,7 +34,7 @@ def findRecommendColorSet(request,colorstr):
 
 @api_view(['GET'])
 def findMyColorSet(request,pk):
-    currentUser = Signin.objects.all().get(pk=pk)
+    currentUser = Signin.objects.all().get(id=pk)
     print(currentUser)
     colorSetQuery = ColorSet.objects.all().filter(uid=currentUser)
     print(colorSetQuery)
