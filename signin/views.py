@@ -23,7 +23,7 @@ def post(request):
         serializer = SigninSerializer(data=request.data)
         try:
             if serializer.is_valid():
-                duplicate = Signin.objects.get(email=serializer.validated_data['email'])
+                duplicate = Signin.objects.filter(email=serializer.validated_data['email'])
                 print(duplicate)
                 return Response(serializer.data,status=200)
         except:
