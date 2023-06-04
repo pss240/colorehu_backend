@@ -25,7 +25,13 @@ def post(request):
             duplicate = Signin.objects.filter(email=serializer.email)
         except:
             duplicate = None
-            print(serializer,serializer.email,serializer['email'],duplicate)
+            print(serializer)
+            print(serializer.email)
+            print(serializer['email'])
+            print(duplicate)
+            print(serializer.data['email'])
+            print(**serializer.data['email'])
+            print(serializer.data.email)
         if duplicate==None:
             if serializer.is_valid():
                 serializer.save()
