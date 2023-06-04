@@ -22,11 +22,25 @@ def colorSetPost(request):
     return Response(serializer.errors,status=400)
 
 @api_view(['GET'])
-def findColorSet(request,colorstr):
+def findRecommendColorSet(request,colorstr):
     
     colorSetQuery = ColorSet.objects.all().filter(colorsetstr__contains=colorstr)
+    #colorSetQuery = colorSetQuery.filter(share=True)
     serialized_colorSet = ColorSetSerializer(colorSetQuery,many=True)
     
     return Response(serialized_colorSet.data,status=200)
+
+@api_view(['GET'])
+def findMyColorSet(request,pk):
+    
+    colorSetQuery = ColorSet.objects.all().filter(pk=pk)
+    serialized_colorSet = ColorSetSerializer(colorSetQuery,many=True)
+    
+    return Response(serialized_colorSet.data,status=200)
+
+@api_view(['GET'])
+def deleteColorSet(request,pk):
+    ColorSet.objects.get(pk = pk).delete()
+    return Response(status=200)
         
     

@@ -27,3 +27,19 @@ def post(request):
 
     return Response(serializer.errors,status=400)
     
+
+@api_view(['GET'])
+def change_nickname(request,pk,nickname):
+
+    try:
+        duplicate = Signin.objects.get(nickname=nickname)
+    except:
+        duplicate = None
+    if duplicate==None:
+        changeUser = Signin.objects.get(pk=pk)
+        changeUser.nickname = nickname
+        changeUser.save()
+        return Response(status=200)
+    else:
+        return Response(status=400)
+    
