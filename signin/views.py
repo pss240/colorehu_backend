@@ -30,21 +30,17 @@ def post(request):
            if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data,status=200)
-            
-        
-
     return Response(serializer.errors,status=400)
     
 
 @api_view(['GET'])
 def change_nickname(request,pk,nickname):
-    duplicate = None
     try:
-        duplicate = Signin.objects.get(nickname=nickname)
+        duplicate = Signin.objects.all().get(nickname=nickname)
     except:
         duplicate = None
     if duplicate==None:
-        changeUser = Signin.objects.get(pk=pk)
+        changeUser = Signin.objects.all().get(pk=pk)
         changeUser.nickname = nickname
         changeUser.save()
         serialized_user = SigninSerializer(changeUser)
