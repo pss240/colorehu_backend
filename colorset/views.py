@@ -7,6 +7,8 @@ from colorset.models import ColorSet
 from colorset.serializer import ColorSetSerializer
 from django.core import serializers
 
+from signin.models import Signin
+
 
 
 @api_view(['POST'])
@@ -33,7 +35,7 @@ def findRecommendColorSet(request,colorstr):
 @api_view(['GET'])
 def findMyColorSet(request,pk):
     
-    colorSetQuery = ColorSet.objects.all().filter(uid=pk)
+    colorSetQuery = ColorSet.objects.all().filter(uid=Signin.objects.all().get(pk=pk))
     serialized_colorSet = ColorSetSerializer(colorSetQuery,many=True)
     
     return Response(serialized_colorSet.data,status=200)
