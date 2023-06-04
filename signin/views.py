@@ -46,5 +46,5 @@ def change_nickname(request,pk,nickname):
         serialized_user = SigninSerializer(changeUser)
         return Response(serialized_user.data,status=200)
     else:
-        return Response(status=400)
+        return Response({'jsonStatus':400},status=400)
     
