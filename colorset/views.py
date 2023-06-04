@@ -34,10 +34,11 @@ def findRecommendColorSet(request,colorstr):
 
 @api_view(['GET'])
 def findMyColorSet(request,pk):
-    currentUser = Signin.objects.all().get(id=pk)
-    print(currentUser)
+    print("inside of findMyColorSet")
+    currentUser = Signin.objects.all().filter(id=pk)
+    print(currentUser.values())
     colorSetQuery = ColorSet.objects.all().filter(uid=currentUser)
-    print(colorSetQuery)
+    print(colorSetQuery.values())
     serialized_colorSet = ColorSetSerializer(colorSetQuery,many=True)
     
     return Response(serialized_colorSet.data,status=200)
