@@ -18,6 +18,7 @@ def get(request):
 @api_view(['POST'])
 def post(request):
     print("inside of sign in")
+    duplicate = None
     if request.method == 'POST':
         serializer = SigninSerializer(data=request.data)
         try:
@@ -38,7 +39,7 @@ def post(request):
 
 @api_view(['GET'])
 def change_nickname(request,pk,nickname):
-
+    duplicate = None
     try:
         duplicate = Signin.objects.get(nickname=nickname)
     except:
