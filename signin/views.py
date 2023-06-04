@@ -21,7 +21,7 @@ def post(request):
     if request.method == 'POST':
         serializer = SigninSerializer(data=request.data)
         try:
-            duplicate = Signin.objects.filter(email=serializer['email'])
+            duplicate = Signin.objects.filter(email=serializer.email)
         except:
             duplicate = None
 
