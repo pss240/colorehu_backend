@@ -18,20 +18,19 @@ def get(request):
 @api_view(['POST'])
 def post(request):
     print("inside of sign in")
-    duplicate = None
+
     if request.method == 'POST':
         serializer = SigninSerializer(data=request.data)
         try:
             if serializer.is_valid():
-                duplicate = Signin.objects.filter(email=serializer.data['email'])
+                duplicate = Signin.objects.get(email=serializer.data['email'])
+                serializer = SigninSerializer(duplicate)
+                return Response(serializer.data,status=200)
         except:
-            duplicate = None
-        if duplicate==None:
-            if serializer.is_valid():
+           if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data,status=200)
-        else:
-            return Response(status=200)
+            
         
 
     return Response(serializer.errors,status=400)
