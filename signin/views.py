@@ -25,7 +25,7 @@ def post(request):
             duplicate = Signin.objects.filter(email=serializer.email)
         except:
             duplicate = None
-
+            print(serializer,serializer.email,serializer['email'],duplicate)
         if duplicate==None:
             if serializer.is_valid():
                 serializer.save()
@@ -48,7 +48,7 @@ def change_nickname(request,pk,nickname):
         changeUser = Signin.objects.get(pk=pk)
         changeUser.nickname = nickname
         changeUser.save()
-        serialized_user = SigninSerializer(changeUser, many=True)
+        serialized_user = SigninSerializer(changeUser)
         return Response(serialized_user.data,status=200)
     else:
         return Response(status=400)
