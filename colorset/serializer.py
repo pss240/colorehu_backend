@@ -20,7 +20,7 @@ class ColorSetSerializer(serializers.ModelSerializer):
             )
     def to_representation(self,instance):
         response = super().to_representation(instance)
-        response['uid'] = SigninSerializer(instance.uid).data
+        response['uid'] = SigninSerializer(instance.uid).data.get('id')
         print(response['uid'])
         return response
 
