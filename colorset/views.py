@@ -24,10 +24,11 @@ def colorSetPost(request):
     return Response(serializer.errors,status=400)
 
 @api_view(['GET'])
-def findRecommendColorSet(request,colorstr):
+def findRecommendColorSet(request,colorstr,keyword):
     
-    colorSetQuery = ColorSet.objects.all().filter(colorsetstr__contains=colorstr)
-    #colorSetQuery = colorSetQuery.filter(share=True)
+    colorSetQuery = ColorSet.objects.all().filter(keyword = keyword)
+    colorSetQuery = colorSetQuery.filter(colorsetstr__contains=colorstr)
+    colorSetQuery = colorSetQuery.filter(share=True)
     serialized_colorSet = ColorSetSerializer(colorSetQuery,many=True)
     
     return Response(serialized_colorSet.data,status=200)
