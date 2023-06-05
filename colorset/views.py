@@ -17,11 +17,12 @@ def colorSetPost(request):
     if request.method == 'POST':
         print("aaaaaaaa")
         serializer = ColorSetSerializer(data=request.data)
-
+        print("abbbbbbbbbbbbbb")
         if serializer.is_valid():
+            print("cccccccccccccccccc")
             serializer.save()
             return Response(serializer.data,status=200)
-
+    print("addddddddddddddddd")
     return Response(serializer.errors,status=400)
 
 @api_view(['GET'])
