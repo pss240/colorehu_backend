@@ -39,7 +39,7 @@ def findMyColorSet(request,pk):
     print("inside of findMyColorSet")
     colorSetQuery = ColorSet.objects.all().filter(uid=pk)
     serialized_colorSet = ColorSetSerializer(colorSetQuery,many=True)
-    
+    print(serialized_colorSet)
     return Response(serialized_colorSet.data,status=200)
 
 @api_view(['GET'])
