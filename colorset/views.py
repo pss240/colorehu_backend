@@ -31,7 +31,7 @@ def findRecommendColorSet(request,colorstr,keyword):
     colorSetQuery = colorSetQuery.filter(colorsetstr__contains=colorstr)
     colorSetQuery = colorSetQuery.filter(share=True)
     serialized_colorSet = ColorSetSerializer(colorSetQuery,many=True)
-    
+    print(serialized_colorSet.data)
     return Response(serialized_colorSet.data,status=200)
 
 @api_view(['GET'])
