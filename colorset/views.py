@@ -17,8 +17,6 @@ def colorSetPost(request):
     if request.method == 'POST':
         print(request.data)
         serializer = ColorSetSerializer(data=request.data)
-        print(serializer)
-        print(serializer.data)
         if serializer.is_valid():
             print("cccccccccccccccccc")
             serializer.save()
