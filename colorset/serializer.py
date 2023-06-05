@@ -19,6 +19,6 @@ class ColorSetSerializer(serializers.ModelSerializer):
             'keyword',
             )
     def to_representation(self,instance):
-        self.fields['uid'] = SigninSerializer(read_only=True).data.get('uid')
+        self.fields['uid'] = SigninSerializer(read_only=True).data['id']
         return super(ColorSetSerializer,self).to_representation(instance)
 
