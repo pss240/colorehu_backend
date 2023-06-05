@@ -23,7 +23,9 @@ def colorSetPost(request):
             print("cccccccccccccccccc")
             serializer.save()
             return Response(serializer.data,status=200)
-    print("addddddddddddddddd")
+    print(serializer.error_messages)
+    print(serializer.error)
+    
     return Response(serializer.errors,status=400)
 
 @api_view(['GET'])
