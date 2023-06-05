@@ -15,7 +15,7 @@ from signin.models import Signin
 def colorSetPost(request):
     print("inside of colorset in")
     if request.method == 'POST':
-        print("aaaaaaaa")
+        print(request.data)
         serializer = ColorSetSerializer(data=request.data)
         print("abbbbbbbbbbbbbb")
         if serializer.is_valid():
