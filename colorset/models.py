@@ -4,8 +4,8 @@ from colorehu import settings
 
 # Create your models here.
 
-
 class ColorSet(models.Model):
+    id = models.AutoField(primary_key=True)
     uid = models.ForeignKey('signin.Signin',on_delete=models.CASCADE,db_column='uid')
     color1 = models.CharField(max_length=200,null=False)
     color2 = models.CharField(max_length=200,blank=True)
