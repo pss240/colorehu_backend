@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from signin.serializer import SigninSerializer
 from .models import ColorSet
 
 class ColorSetSerializer(serializers.ModelSerializer):
@@ -16,3 +18,7 @@ class ColorSetSerializer(serializers.ModelSerializer):
             'share',
             'keyword',
             )
+    def to_representation(self,instance):
+        self.fields['uid'] = SigninSerializer(read_only=True)
+        return super(ColorSetSerializer,self).to_representation(instance)
+
