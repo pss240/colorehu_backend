@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import json
+import pymysql
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+pymysql.install_as_MySQLdb()
 # secret_file = os.path.join(BASE_DIR,'secrets.json')
 # with open(secret_file) as f:
 #     secrets = json.loads(f.read())
@@ -28,10 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #         error_msg = "Set the {} environment variable".format(setting)
 #         raise ImproperlyConfigured(error_msg)
 
-SECRET_KEY = "django-insecure-v0p1lrx#d+6%fkolk1@6&9p0h)gfh4f@k)_tzrhsj)c5f(ptxh"
+SECRET_KEY = ""
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,8 +87,15 @@ WSGI_APPLICATION = 'colorehu.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '',
+        'USER':'',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '3306',
+        'OPTIONS':{
+            'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
